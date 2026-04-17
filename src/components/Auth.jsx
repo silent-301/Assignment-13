@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../apiConfig';
 
 const Auth = ({ mode }) => {
   const isLogin = mode === 'login';
@@ -14,7 +15,7 @@ const Auth = ({ mode }) => {
     setError('');
     setIsLoading(true);
     try {
-      const url = `http://localhost:3000/users/${isLogin ? 'login' : 'signup'}`;
+      const url = `${API_BASE_URL}/users/${isLogin ? 'login' : 'signup'}`;
       const res = await axios.post(url, formData);
       
       if (isLogin) {

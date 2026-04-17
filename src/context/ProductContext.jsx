@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import API_BASE_URL from '../apiConfig';
 
 export const ProductContext = createContext();
 
@@ -8,7 +9,7 @@ export const ProductProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const API_URL = "http://localhost:3000/products"; 
+  const API_URL = `${API_BASE_URL}/products`; 
 
   const fetchProducts = async () => {
     setLoading(true);

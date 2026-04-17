@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ProductContext } from '../context/ProductContext';
+import API_BASE_URL from '../apiConfig';
 
 const AddEditProduct = () => {
   const { id } = useParams(); 
@@ -35,7 +36,7 @@ const AddEditProduct = () => {
     e.preventDefault();
     const isEdit = !!id;
     const method = isEdit ? 'PUT' : 'POST';
-    const url = isEdit ? `http://localhost:3000/products/${id}` : 'http://localhost:3000/products';
+    const url = isEdit ? `${API_BASE_URL}/products/${id}` : `${API_BASE_URL}/products`;
 
     try {
       const token = localStorage.getItem('token');

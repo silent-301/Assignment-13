@@ -21,10 +21,11 @@ mongoose.connect(process.env.Mongo_URL)
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 
-
-
-
 const Port=3000;
-app.listen(Port,()=>{
-console.log(`Server is running on http://localhost:${Port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(Port, () => {
+    console.log(`Server is running on http://localhost:${Port}`);
+  });
+}
+
+module.exports = app;
