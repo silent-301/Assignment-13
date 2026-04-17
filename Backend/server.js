@@ -21,6 +21,11 @@ mongoose.connect(process.env.Mongo_URL)
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', db: mongoose.connection.readyState });
+});
+
 const Port=3000;
 if (process.env.NODE_ENV !== 'production') {
   app.listen(Port, () => {
